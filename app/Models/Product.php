@@ -9,6 +9,10 @@ class Product extends Model
 {
     use HasFactory;
 
+    const BORRADOR = 1;
+    const PUBLICADO = 2;
+
+
     protected $guarded = ['id','created_at','updated_at'];
 
     //Relacion de uno a muchos
@@ -27,7 +31,7 @@ class Product extends Model
 
     //Relacion muchos a muchos
     public function colors(){
-        return $this->hasMany(Color::class);
+        return $this->belongsToMany(Color::class);
     }
 
     //Relacion uno a muchos polimorfica
